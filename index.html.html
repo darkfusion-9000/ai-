@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Question Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+      width: 400px;
+      text-align: center;
+    }
+    input, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .questions {
+      text-align: left;
+      margin-top: 20px;
+    }
+    .question {
+      background: #f9f9f9;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>AI Question Generator</h2>
+    <input type="text" id="topic" placeholder="Enter a topic (e.g. Space, History)">
+    <button onclick="generateQuestions()">Generate Questions</button>
+    <div class="questions" id="questions"></div>
+  </div>
+
+  <script>
+    async function generateQuestions() {
+      const topic = document.getElementById("topic").value;
+      const output = document.getElementById("questions");
+      output.innerHTML = "<p>Generating questions...</p>";
+
+      // Here you would normally call your backend API
+      // Example using OpenAI (you need your own backend for security)
+      // For demo, I’ll simulate with hardcoded questions:
+
+      setTimeout(() => {
+        const sampleQuestions = [
+          `What is ${topic}?`,
+          `Why is ${topic} important?`,
+          `Explain the history of ${topic}.`,
+          `What are the main challenges in ${topic}?`,
+          `How will ${topic} affect the future?`
+        ];
+        output.innerHTML = sampleQuestions.map(q => `<div class="question">${q}</div>`).join("");
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
